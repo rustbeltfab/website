@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Rust Belt Fabrication</title>
+
+  <!-- ── FONTS — same as index.html, change all pages together ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Services page background for the cards section */
+    #services-main { background: var(--steel-md); }
+
+    /* Materials grid (reused from home style) */
+    .materials-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .materials-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      margin-top: 2rem;
+    }
+    .material-item {
+      background: var(--steel);
+      padding: 1.75rem;
+      transition: background 0.2s;
+    }
+    .material-item:hover { background: var(--steel-md); }
+    .material-dot {
+      width: 8px; height: 8px;
+      background: var(--rust);
+      margin-bottom: 0.75rem;
+      transform: rotate(45deg);
+    }
+    .material-name {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .material-desc { font-size: 0.8rem; color: var(--smoke); }
+
+    /* CTA banner at bottom of services */
+    .services-cta {
+      background: var(--rust);
+      padding: 5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .services-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+    }
+    .services-cta p { color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
+    .btn-white {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--white);
+      color: var(--rust);
+      padding: 0.9rem 2.2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      display: inline-block;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-white:hover { background: var(--steel); color: var(--white); }
+
+    @media (max-width: 900px) {
+      .materials-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .services-cta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV — keep this identical on every page, just update the active link ── -->
+  <nav>
+    <a class="nav-logo" href="index.html"><span>Rust Belt</span> Fabrication</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li><!-- ← active = this page -->
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="contact.html">Get a Quote</a>
+  </nav>
+
+
+  <!-- ── PAGE HERO BANNER — change title and subtitle ── -->
+  <div class="page-hero">
+    <p class="section-eyebrow">What We Do</p>
+    <h1 class="section-title">Our Services</h1>
+    <p>From a cracked ATV frame to a one-off custom bracket — if it's metal and it needs fixing or building, we're your call. We come to you anywhere in West Michigan.</p>
+  </div>
+
+
+  <!-- ============================================================
+       SERVICE CARDS
+       To add a new card: copy one <div class="service-card">
+       block and paste it inside the grid. Change the number,
+       icon, title, and description.
+       To remove a card: delete the whole <div class="service-card"> block.
+       ============================================================ -->
+  <section id="services-main">
+    <div class="services-header">
+      <div>
+        <p class="section-eyebrow">Full List</p>
+        <h2 class="section-title">Everything We Offer</h2>
+      </div>
+      <!-- ← Change this intro text -->
+      <p class="services-intro">No job too small. No drive too far. If it's metal, we can handle it.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- ── SERVICE CARD 1 — change icon, title, description ── -->
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
+        </div>
+        <h3 class="service-name">Custom Welding</h3>
+        <p class="service-desc">Got something that needs to be built, joined, or reinforced? We weld steel, stainless, and aluminum — custom to whatever you're working on. Bring us a sketch or just explain it.</p>
+      </div>
+
+      <!-- ── SERVICE CARD 2 ── -->
+      <div class="service-card reveal">
+        <span class="service-num">02</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 17l4-8 4 4 3-5 4 9"/><path d="M3 20h18"/></svg>
+        </div>
+        <h3 class="service-name">ATV Frame Repair</h3>
+        <p class="service-desc">Cracked frame, bent tubing, snapped mounts? We specialize in ATV, UTV, and off-road frame repair and reinforcement. We'll assess it, weld it solid, and get you back on the trail.</p>
+      </div>
+
+      <!-- ── SERVICE CARD 3 ── -->
+      <div class="service-card reveal">
+        <span class="service-num">03</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3 class="service-name">Mobile On-Site Service</h3>
+        <p class="service-desc">Can't haul it in? No problem. We load up the truck and come to you — your driveway, shop, farm, or trail. We serve all of West Michigan. Call and we'll work out the details.</p>
+      </div>
+
+      <!-- ── SERVICE CARD 4 ── -->
+      <div class="service-card reveal">
+        <span class="service-num">04</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3 class="service-name">Repairs &amp; Modifications</h3>
+        <p class="service-desc">Broken brackets, worn-out hitches, cracked equipment frames — we fix it. Ag equipment, trailers, tooling, garden structures, and more. If it's broken, we can probably fix it.</p>
+      </div>
+
+      <!-- ── SERVICE CARD 5 ── -->
+      <div class="service-card reveal">
+        <span class="service-num">05</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3 class="service-name">Small Custom Fab</h3>
+        <p class="service-desc">Need a one-off bracket, guard, rack, or mount? We love small jobs. Bring us a sketch or just describe what you need — we'll figure it out together and build it right.</p>
+      </div>
+
+      <!-- ── SERVICE CARD 6 ── -->
+      <div class="service-card reveal">
+        <span class="service-num">06</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="service-name">Farm &amp; Home Metalwork</h3>
+        <p class="service-desc">Gates, fencing, livestock equipment, garden structures, stairs, and handrails. Practical fabrication for everyday life in West Michigan — functional and built to last.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       MATERIALS SECTION
+       Change the material names and descriptions below.
+       ============================================================ -->
+  <section>
+    <div class="materials-layout">
+      <div>
+        <p class="section-eyebrow">What We Work With</p>
+        <h2 class="section-title">Materials &amp;<br>Capabilities</h2>
+        <!-- ← Change this description -->
+        <p style="color:var(--smoke);font-size:0.95rem;line-height:1.7;margin-top:1.5rem;">
+          We work with common metals and can source what we don't have on hand.
+          If you've got the material already, we can work with that too.
+        </p>
+      </div>
+
+      <div>
+        <div class="materials-list reveal">
+
+          <!-- ── MATERIAL ITEMS — change name and description ── -->
+          <div class="material-item">
+            <div class="material-dot"></div>
+            <p class="material-name">Mild Steel</p>
+            <p class="material-desc">Plate, tube, angle, channel, bar stock</p>
+          </div>
+          <div class="material-item">
+            <div class="material-dot"></div>
+            <p class="material-name">Stainless Steel</p>
+            <p class="material-desc">304 &amp; 316 for food-grade and outdoor use</p>
+          </div>
+          <div class="material-item">
+            <div class="material-dot"></div>
+            <p class="material-name">Aluminum</p>
+            <p class="material-desc">Sheet, extrusions, plate — lightweight builds</p>
+          </div>
+          <div class="material-item">
+            <div class="material-dot"></div>
+            <p class="material-name">Galvanized Steel</p>
+            <p class="material-desc">Corrosion-resistant for outdoor structures</p>
+          </div>
+          <div class="material-item">
+            <div class="material-dot"></div>
+            <p class="material-name">DOM / Chromoly Tubing</p>
+            <p class="material-desc">High-strength for frames and roll cages</p>
+          </div>
+          <div class="material-item">
+            <div class="material-dot"></div>
+            <p class="material-name">Your Material</p>
+            <p class="material-desc">Bring your own stock — we'll work with it</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── CALL TO ACTION BANNER ── -->
+  <div class="services-cta">
+    <div>
+      <!-- ← Change CTA headline and subtext -->
+      <h2>Not Sure What You Need?</h2>
+      <p>Give us a call or send a text with a photo. We'll figure it out together.</p>
+    </div>
+    <a class="btn-white" href="contact.html">Get a Free Quote →</a>
+  </div>
+
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div>
+      <div class="footer-logo"><span>Rust Belt</span> Fabrication</div>
+      <p class="footer-tagline">Custom Welding &amp; ATV Frame Repair · Rockford, Michigan · We Come To You</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2026 Rust Belt Fabrication · Rockford, MI 49341</p>
+    <p>Built tough, built local.</p>
+  </div>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(184,75,26,0.5)' : 'rgba(184,75,26,0.3)';
+    });
+  </script>
+</body>
+</html>

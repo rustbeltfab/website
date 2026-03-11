@@ -1,0 +1,667 @@
+/* ============================================================
+   RUST BELT FABRICATION — SHARED STYLESHEET
+   This file controls the look of ALL pages on your site.
+   You only need to change things in ONE place here and it
+   updates every page automatically.
+   ============================================================ */
+
+
+/* ============================================================
+   1. FONTS
+   ============================================================
+   To change fonts:
+   1. Go to fonts.google.com and find a font you like
+   2. Click "Get font" then "Get embed code"
+   3. Copy the <link> tag and paste it into the <head> of
+      EACH HTML file, replacing the existing font link
+   4. Then update the font names below to match your new font
+
+   Current fonts:
+   - 'Bebas Neue'        → big bold headings (hero title, section titles)
+   - 'Barlow Condensed'  → nav links, labels, eyebrows, buttons
+   - 'Barlow'            → body text, descriptions, paragraphs
+
+   Font combos to try (replace all three below):
+   - Bold/Loud:    'Anton', 'Oswald', 'Roboto'
+   - Mechanical:   'Teko', 'Rajdhani', 'Open Sans'
+   - Classic:      'Oswald', 'Barlow Condensed', 'Lato'
+   ============================================================ */
+
+/* --- HEADING FONT (used for big titles) --- */
+/* Change 'Bebas Neue' to your chosen heading font */
+:root { --font-heading: 'Bebas Neue', sans-serif; }
+
+/* --- LABEL FONT (used for nav, buttons, eyebrows) --- */
+/* Change 'Barlow Condensed' to your chosen label font */
+:root { --font-label: 'Barlow Condensed', sans-serif; }
+
+/* --- BODY FONT (used for paragraphs and descriptions) --- */
+/* Change 'Barlow' to your chosen body font */
+:root { --font-body: 'Barlow', sans-serif; }
+
+
+/* ============================================================
+   2. COLORS
+   ============================================================
+   Change the hex codes here to update colors across the site.
+   Use a color picker at coolors.co or htmlcolorcodes.com
+
+   --rust      → the main accent color (buttons, highlights)
+   --rust-dk   → darker version of accent (hover states)
+   --accent    → bright hover version of accent
+   --steel     → darkest background color
+   --steel-md  → medium background (cards, sections)
+   --steel-lt  → lightest background (hover on cards)
+   --smoke     → secondary text color (descriptions)
+   --white     → main text / light text color
+
+   COLOR SCHEME IDEAS:
+   Blue steel:   --rust: #1A6EB8  --steel: #111820
+   Forest green: --rust: #2E7D32  --steel: #141A14
+   Gunmetal:     --rust: #778899  --steel: #1A1A1A
+   Orange fire:  --rust: #E05C20  --steel: #1C1C1C
+   ============================================================ */
+
+:root {
+  --rust:     #B84B1A;   /* ← MAIN ACCENT — change this first */
+  --rust-dk:  #8C3510;   /* ← darker accent, used rarely */
+  --accent:   #E05C20;   /* ← bright hover accent */
+  --steel:    #1C1F24;   /* ← darkest background */
+  --steel-md: #2E3238;   /* ← medium background */
+  --steel-lt: #3D4249;   /* ← lightest background */
+  --smoke:    #9AA0A8;   /* ← secondary/muted text */
+  --white:    #F7F4EF;   /* ← main text color */
+}
+
+
+/* ============================================================
+   3. BASE / RESET
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--steel);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* Subtle noise texture overlay — gives a raw, industrial feel */
+/* To remove it, delete this entire block */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+
+/* ============================================================
+   4. NAVIGATION
+   ============================================================
+   The nav appears on every page. Edit the HTML in each file
+   to change link names or add/remove pages.
+   ============================================================ */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  height: 72px;
+  background: rgba(28,31,36,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(184,75,26,0.3);
+}
+
+/* The logo text in the top-left */
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;           /* ← change logo size here */
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--rust); } /* ← "Rust Belt" part in accent color */
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--rust); } /* active = current page */
+
+/* "Get a Quote" button in the nav */
+.nav-cta {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--rust);
+  color: var(--white);
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  transition: background 0.2s;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+.nav-cta:hover { background: var(--accent); }
+
+
+/* ============================================================
+   5. BUTTONS
+   ============================================================ */
+
+/* Solid filled button (primary call to action) */
+.btn-primary {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--rust);
+  color: var(--white);
+  padding: 0.9rem 2.2rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+
+/* Outline / ghost button (secondary action) */
+.btn-outline {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--white);
+  padding: 0.9rem 2.2rem;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--rust); color: var(--rust); }
+
+
+/* ============================================================
+   6. SECTION SHARED STYLES
+   ============================================================ */
+
+section { padding: 7rem 4rem; }
+
+/* Small label above section titles (e.g. "What We Do") */
+.section-eyebrow {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 30px; height: 2px;
+  background: var(--rust);
+}
+
+/* Big section headings */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+/* Page hero banner (used on inner pages like Gallery, Contact) */
+.page-hero {
+  padding: 9rem 4rem 5rem;
+  background:
+    linear-gradient(135deg, rgba(28,31,36,0.97) 55%, rgba(140,53,16,0.15) 100%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 40px,
+      rgba(255,255,255,0.012) 40px,
+      rgba(255,255,255,0.012) 41px
+    );
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.page-hero .section-title { margin-bottom: 0.75rem; }
+.page-hero p {
+  color: var(--smoke);
+  font-size: 1.05rem;
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   7. SCROLLING TICKER BAR
+   ============================================================
+   The orange bar that scrolls service names.
+   Edit the text in the HTML (ticker-item spans).
+   ============================================================ */
+
+.ticker {
+  background: var(--rust);
+  padding: 0.75rem 0;
+  overflow: hidden;
+}
+.ticker-inner {
+  display: flex;
+  animation: ticker-scroll 30s linear infinite;
+  white-space: nowrap;
+}
+.ticker-item {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.ticker-item::after { content: '✦'; color: rgba(255,255,255,0.5); }
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* ============================================================
+   8. SERVICE CARDS
+   ============================================================ */
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+}
+.services-intro {
+  font-size: 1rem;
+  color: var(--smoke);
+  max-width: 380px;
+  line-height: 1.7;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+}
+.service-card {
+  background: var(--steel-md);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 3px;
+  background: var(--rust);
+  transition: width 0.4s ease;
+}
+.service-card:hover { background: var(--steel-lt); }
+.service-card:hover::before { width: 100%; }
+
+.service-icon {
+  width: 52px; height: 52px;
+  background: rgba(184,75,26,0.12);
+  border: 1px solid rgba(184,75,26,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.service-icon svg { width: 24px; height: 24px; stroke: var(--rust); fill: none; stroke-width: 1.5; }
+
+.service-num {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+}
+.service-name {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+}
+.service-desc {
+  font-size: 0.9rem;
+  color: var(--smoke);
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   9. TESTIMONIAL CARDS
+   ============================================================ */
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+.testimonial-card {
+  background: var(--steel);
+  padding: 2.5rem;
+  border-top: 3px solid transparent;
+  transition: border-color 0.3s;
+}
+.testimonial-card:hover { border-color: var(--rust); }
+.quote-mark {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  line-height: 0.8;
+  color: var(--rust);
+  opacity: 0.3;
+  margin-bottom: 1rem;
+}
+.testimonial-text {
+  font-size: 0.95rem;
+  color: var(--smoke);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+.testimonial-author strong {
+  display: block;
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.testimonial-author span { font-size: 0.8rem; color: var(--rust); }
+
+
+/* ============================================================
+   10. CONTACT FORM & INFO
+   ============================================================ */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+.contact-info {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact-item { display: flex; align-items: flex-start; gap: 1.25rem; }
+.contact-icon {
+  width: 44px; height: 44px;
+  background: rgba(184,75,26,0.12);
+  border: 1px solid rgba(184,75,26,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-icon svg { width: 18px; height: 18px; stroke: var(--rust); fill: none; stroke-width: 1.5; }
+.contact-item p { font-size: 0.85rem; color: var(--smoke); line-height: 1.5; }
+.contact-item strong {
+  display: block;
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+}
+
+/* Form fields */
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+label {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+input, select, textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+input:focus, select:focus, textarea:focus { border-color: var(--rust); }
+select option { background: var(--steel-md); }
+textarea { resize: vertical; min-height: 130px; }
+
+.form-submit {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--rust);
+  color: var(--white);
+  border: none;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  align-self: flex-start;
+}
+.form-submit:hover { background: var(--accent); }
+.form-success { display: none; color: #6ee7b7; font-size: 0.9rem; margin-top: 0.5rem; }
+
+
+/* ============================================================
+   11. GALLERY GRID
+   ============================================================ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-top: 3rem;
+}
+
+/* Each gallery item — replace background-color with background-image: url('your-photo.jpg') */
+.gallery-item {
+  aspect-ratio: 4/3;
+  background: var(--steel-md);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: auto; min-height: 320px; }
+
+.gallery-item-inner {
+  width: 100%; height: 100%;
+  background: var(--steel-lt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+  position: relative;
+}
+.gallery-item:hover .gallery-item-inner { transform: scale(1.04); }
+
+/* The overlay that appears on hover */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(184,75,26,0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay span {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  color: white;
+}
+
+/* Placeholder icon shown before you add real photos */
+.gallery-placeholder-icon { opacity: 0.15; }
+.gallery-placeholder-icon svg { width: 48px; height: 48px; stroke: var(--white); fill: none; stroke-width: 1; }
+
+.gallery-label {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  margin-top: 0.5rem;
+  opacity: 0.6;
+}
+
+
+/* ============================================================
+   12. FOOTER
+   ============================================================ */
+
+footer {
+  background: #131518;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 3rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+}
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.footer-logo span { color: var(--rust); }
+.footer-tagline {
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+.footer-links { display: flex; gap: 2rem; list-style: none; }
+.footer-links a {
+  font-family: var(--font-label);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--rust); }
+
+.footer-bottom {
+  background: #0E1013;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+
+
+/* ============================================================
+   13. SCROLL REVEAL ANIMATION
+   ============================================================
+   Elements with class="reveal" fade in as you scroll down.
+   To disable, remove class="reveal" from elements in HTML.
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+
+/* ============================================================
+   14. MOBILE / RESPONSIVE
+   ============================================================
+   Adjustments for phones and small screens.
+   ============================================================ */
+
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links, .nav-cta { display: none; }        /* hide nav links on mobile */
+  section { padding: 4rem 1.5rem; }
+  .page-hero { padding: 7rem 1.5rem 3rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; }
+  .footer-links { flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
