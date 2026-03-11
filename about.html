@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Rust Belt Fabrication</title>
+
+  <!-- ── FONTS — same as all other pages ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ── TEAM SECTION ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .team-card {
+      background: var(--steel-md);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .team-card:hover { transform: translateY(-4px); }
+
+    /* ── PHOTO AREA ──
+       To add a real photo, replace the <div class="team-photo-placeholder">
+       block inside .team-photo with:
+       <img src="employee-name.jpg" alt="Employee Name" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+       Put the photo file in the same folder as your HTML files.
+       ============================================================ */
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--steel-lt);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Placeholder shown before you add a real photo — delete this once you have photos */
+    .team-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--steel-lt), var(--steel-md));
+    }
+    .team-photo-placeholder svg {
+      width: 64px; height: 64px;
+      stroke: rgba(255,255,255,0.15);
+      fill: none;
+      stroke-width: 1;
+    }
+    .team-photo-placeholder span {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Accent bar across top of card */
+    .team-card-bar {
+      height: 4px;
+      background: var(--rust);
+    }
+
+    .team-card-body { padding: 2.5rem; }
+
+    /* ── EMPLOYEE NAME — change in HTML below ── */
+    .team-name {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── JOB TITLE — change in HTML below ── */
+    .team-title {
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.5rem;
+    }
+
+    .team-divider {
+      width: 40px; height: 2px;
+      background: rgba(255,255,255,0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── BIO TEXT — change in HTML below ── */
+    .team-bio {
+      font-size: 0.95rem;
+      color: var(--smoke);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Skills/specialty tags */
+    .team-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    /* ── SKILL TAGS — add/remove tags in HTML below ── */
+    .skill-tag {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: rgba(184,75,26,0.12);
+      border: 1px solid rgba(184,75,26,0.3);
+      color: var(--smoke);
+      padding: 0.35rem 0.85rem;
+    }
+
+    /* Optional fun fact row at bottom of card */
+    .team-fact {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem 1.25rem;
+    }
+    .team-fact svg {
+      width: 16px; height: 16px;
+      stroke: var(--rust);
+      fill: none;
+      stroke-width: 1.5;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    /* ── FUN FACT — change in HTML below ── */
+    .team-fact p {
+      font-size: 0.85rem;
+      color: var(--smoke);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ── VALUES SECTION ── */
+    .values-section { background: var(--steel-md); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      margin-top: 3rem;
+    }
+    .value-card {
+      background: var(--steel-md);
+      padding: 2.5rem;
+      transition: background 0.2s;
+    }
+    .value-card:hover { background: var(--steel-lt); }
+    .value-num {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      color: rgba(184,75,26,0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .value-name {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.75rem;
+    }
+    .value-desc { font-size: 0.9rem; color: var(--smoke); line-height: 1.7; }
+
+    /* ── CTA STRIP ── */
+    .about-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 5rem 4rem;
+      background: var(--rust);
+    }
+    .about-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+    }
+    .about-cta p { color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
+    .btn-white {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--white);
+      color: var(--rust);
+      padding: 0.9rem 2.2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      display: inline-block;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-white:hover { background: var(--steel); color: var(--white); }
+
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .about-cta { flex-direction: column; align-items: flex-start; padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       Add "About Us" to the nav on ALL your other pages too!
+       Copy this nav and paste it into index.html, services.html,
+       gallery.html, and contact.html — replacing the old nav.
+       ============================================================ -->
+  <nav>
+    <a class="nav-logo" href="index.html"><span>Rust Belt</span> Fabrication</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html" class="active">About Us</a></li><!-- ← active page -->
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="contact.html">Get a Quote</a>
+  </nav>
+
+
+  <!-- ── PAGE HERO — change title and subtitle ── -->
+  <div class="page-hero">
+    <p class="section-eyebrow">The People Behind It</p>
+    <h1 class="section-title">About Us</h1>
+    <!-- ← Change this subtitle -->
+    <p>We're a small operation run by two guys who know metal and take pride in their work. Based in Rockford, MI — built on doing the job right.</p>
+  </div>
+
+
+  <!-- ============================================================
+       TEAM / EMPLOYEE BIOS
+       Fill in the details for both employees below.
+       Each card has: photo, name, title, bio, skill tags, fun fact.
+       ============================================================ -->
+  <section>
+    <p class="section-eyebrow">The Crew</p>
+    <h2 class="section-title">Meet the Team</h2>
+
+    <div class="team-grid">
+
+      <!-- ══════════════════════════════════════
+           EMPLOYEE 1
+           ══════════════════════════════════════ -->
+      <div class="team-card reveal">
+        <div class="team-card-bar"></div>
+
+        <!-- PHOTO AREA
+             To add a real photo, replace everything inside .team-photo with:
+             <img src="your-photo.jpg" alt="Employee Name"
+                  style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        -->
+        <div class="team-photo">
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span>Add photo here</span>
+          </div>
+        </div>
+
+        <div class="team-card-body">
+
+          <!-- ← CHANGE: Employee 1 name -->
+          <h2 class="team-name">Your Name</h2>
+          <!-- ← CHANGE: Employee 1 job title -->
+          <p class="team-title">Owner / Lead Fabricator</p>
+
+          <div class="team-divider"></div>
+
+          <!-- ← CHANGE: Employee 1 bio — write 2-4 sentences about them.
+               Include how long they've been welding, what they specialize in,
+               where they're from, anything personal that builds trust. -->
+          <p class="team-bio">
+            [Your name] grew up in West Michigan and has been welding since he was a teenager.
+            After years working in [previous job/shop], he started Rust Belt Fabrication to do
+            honest work for real people in his own community. He specializes in ATV frame repair
+            and custom fabrication, and takes pride in every weld he lays down.
+          </p>
+
+          <!-- ← CHANGE: Add/remove skill tags. Copy a <span> to add more. -->
+          <div class="team-skills">
+            <span class="skill-tag">MIG Welding</span>
+            <span class="skill-tag">TIG Welding</span>
+            <span class="skill-tag">ATV Repair</span>
+            <span class="skill-tag">Custom Fab</span>
+            <span class="skill-tag">Mobile Service</span>
+          </div>
+
+          <!-- ← CHANGE: A fun fact or personal detail — makes you more relatable -->
+          <div class="team-fact">
+            <svg viewBox="0 0 24 24"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
+            <p>"[Add a fun fact, hobby, or personal detail — e.g. 'Rides ATVs every weekend on the trails near Rockford. Knows firsthand how badly a cracked frame ruins your day.']"</p>
+          </div>
+
+        </div>
+      </div><!-- end employee 1 -->
+
+
+      <!-- ══════════════════════════════════════
+           EMPLOYEE 2
+           ══════════════════════════════════════ -->
+      <div class="team-card reveal">
+        <div class="team-card-bar"></div>
+
+        <!-- PHOTO AREA — same instructions as above -->
+        <div class="team-photo">
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span>Add photo here</span>
+          </div>
+        </div>
+
+        <div class="team-card-body">
+
+          <!-- ← CHANGE: Employee 2 name -->
+          <h2 class="team-name">Partner's Name</h2>
+          <!-- ← CHANGE: Employee 2 job title -->
+          <p class="team-title">Co-Owner / Welder</p>
+
+          <div class="team-divider"></div>
+
+          <!-- ← CHANGE: Employee 2 bio -->
+          <p class="team-bio">
+            [Partner's name] brings [X] years of hands-on metal experience to Rust Belt Fabrication.
+            He grew up [detail about background] and has spent his career working on everything from
+            [type of work] to [type of work]. When he's not on a job site, you'll find him [hobby/interest].
+            He handles [specific role — e.g. on-site repairs, farm calls, etc.].
+          </p>
+
+          <!-- ← CHANGE: Add/remove skill tags for employee 2 -->
+          <div class="team-skills">
+            <span class="skill-tag">Structural Welding</span>
+            <span class="skill-tag">Repairs</span>
+            <span class="skill-tag">Farm &amp; Ag</span>
+            <span class="skill-tag">On-Site Service</span>
+          </div>
+
+          <!-- ← CHANGE: Employee 2 fun fact -->
+          <div class="team-fact">
+            <svg viewBox="0 0 24 24"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
+            <p>"[Add a fun fact or personal detail for employee 2 here.]"</p>
+          </div>
+
+        </div>
+      </div><!-- end employee 2 -->
+
+    </div><!-- end team-grid -->
+  </section>
+
+
+  <!-- ============================================================
+       VALUES SECTION
+       Change the value names and descriptions below.
+       Add or remove cards as needed.
+       ============================================================ -->
+  <section class="values-section">
+    <p class="section-eyebrow">What We Stand For</p>
+    <h2 class="section-title">Our Values</h2>
+
+    <div class="values-grid">
+
+      <!-- ← CHANGE: value name and description -->
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <h3 class="value-name">Honest Work</h3>
+        <p class="value-desc">We tell you what we can do, what it'll cost, and how long it'll take — before we start. No upselling, no surprises on the invoice.</p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-num">02</div>
+        <h3 class="value-name">Show Up</h3>
+        <p class="value-desc">We come to you. No hauling your ATV across the county if you can't move it. We load the truck, drive out, and get it done on your turf.</p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-num">03</div>
+        <h3 class="value-name">Built to Last</h3>
+        <p class="value-desc">We're not here to do a quick patch and hope it holds. Every weld and every repair is done like it has to last — because it should.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── CTA STRIP ── -->
+  <div class="about-cta">
+    <div>
+      <h2>Ready to Work With Us?</h2>
+      <p>Give us a call, send a text, or fill out the form. We'll get back to you same day.</p>
+    </div>
+    <a class="btn-white" href="contact.html">Get a Free Quote →</a>
+  </div>
+
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div>
+      <div class="footer-logo"><span>Rust Belt</span> Fabrication</div>
+      <p class="footer-tagline">Custom Welding &amp; ATV Frame Repair · Rockford, Michigan · We Come To You</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2026 Rust Belt Fabrication · Rockford, MI 49341</p>
+    <p>Built tough, built local.</p>
+  </div>
+
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(184,75,26,0.5)' : 'rgba(184,75,26,0.3)';
+    });
+  </script>
+
+</body>
+</html>
