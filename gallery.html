@@ -45,7 +45,7 @@
        ============================================================ */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 8px;
     }
 
@@ -199,175 +199,36 @@
   </div>
 
 
-  <section>
+  <section>      
 
-    <!-- ============================================================
-         INSTRUCTIONS BOX — DELETE THIS BLOCK once you have real photos.
-         This is just a helper note for you while building the site.
-         ============================================================ -->
-    <div class="photo-instructions">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <div>
-        <h3>How to Add Your Own Photos</h3>
-        <p>
-          1. Put your photo files (.jpg or .png) in the same folder as this HTML file.<br>
-          2. In the gallery grid below, find any <code>.gallery-item-bg</code> div.<br>
-          3. Add a style attribute like this:<br>
-          <code>style="background-image: url('your-photo-name.jpg'); background-size: cover; background-position: center;"</code><br>
-          4. Delete the placeholder icon and text inside that div.<br>
-          5. Update the overlay title and tag to describe the job.<br><br>
-          Tip: Use <strong>wide</strong> class for landscape/horizontal photos, <strong>tall</strong> for portrait/vertical ones.
-        </p>
-      </div>
-    </div>
-
-
-    <!-- ============================================================
-         FILTER TABS
-         These let visitors filter by job type.
-         To add a category: copy a <button> and change the text.
-         The filtering is handled by the JavaScript at the bottom.
-         Each gallery item needs a data-category attribute that
-         matches the filter button's data-filter value.
-         ============================================================ -->
+<!--filters-->
     <div class="gallery-filters">
       <button class="filter-btn active" data-filter="all">All Work</button>
       <button class="filter-btn" data-filter="custom">Custom Fab</button>
       <button class="filter-btn" data-filter="repair">Repairs</button>
       </div>
 
-
-    <!-- ============================================================
-         GALLERY GRID
-         Each .gallery-item is one photo slot.
-
-         Classes you can mix:
-           (no extra class) = normal square tile
-           wide             = spans 2 columns (good for wide/landscape photos)
-           tall             = spans 2 rows (good for tall/portrait photos)
-
-         
-
-         TO ADD A PHOTO:
-           Add style="background-image:url('photo.jpg');background-size:cover;background-position:center;"
-           to the .gallery-item-bg div, and remove the placeholder-icon and placeholder-text divs.
-
-         TO ADD MORE TILES:
-           Copy any .gallery-item block and paste it into the grid.
-         ============================================================ -->
+<!--pic1-->
     <div class="gallery-grid">
 
-      <!-- ── TILE 1 — wide featured slot ── -->
- <div class="gallery-item tall reveal" data-category="custom">
-        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/fueltank.jpg'); background-size: cover; background-position: left;">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <p class="placeholder-text"></p>
-        </div>
-        <div class="gallery-overlay">
-          <p class="overlay-title">Custom Jetski Fuel Tank</p>
-          <p class="overlay-tag">Aluminum MiG</p>
-        </div>
-      </div>
-      
-      <!-- ── TILE 2 ── -->
-      <div class="gallery-item tall reveal" data-category="custom">
-        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/bumperbefore.jpg'); background-size: cover; background-position: right;">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <p class="placeholder-text"></p>
-        </div>
-        <div class="gallery-overlay">
-          <p class="overlay-title">F150 Bumper</p>
-          <p class="overlay-tag">Bumper Before</p>
-        </div>
-      </div>
+     <div class="gallery-item reveal" data-category="custom">
+  <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/fueltank.jpg'); background-size: cover; background-position: center;">
+  </div>
+  <div class="gallery-overlay">
+    <p class="overlay-title">Custom Jetski Fuel Tank</p>
+    <p class="overlay-tag">ALuminum MiG</p>
+  </div>
+</div>
 
-      <!-- ── TILE 3 ── -->
-      <div class="gallery-item reveal" data-category="repair">
-        <div class="gallery-item-bg">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <p class="placeholder-text">https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/bumperafter.jpg</p>
-        </div>
-        <div class="gallery-overlay">
-          <p class="overlay-title">F150 Bumper</p>
-          <p class="overlay-tag">Bumper After</p>
-        </div>
-      </div>
-
-      <!-- ── TILE 4 ── -->
-      <div class="gallery-item reveal" data-category="repair">
-        <div class="gallery-item-bg">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <p class="placeholder-text">https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/tip.jpg</p>
-        </div>
-        <div class="gallery-overlay">
-          <p class="overlay-title">Custom 6.4 Powerstroke Exhaust Tip</p>
-          <p class="overlay-tag">Steel MiG Welding</p>
-        </div>
-      </div>
-
-      <!-- ── TILE 5 ── -->
-      <div class="gallery-item wide reveal" data-category="farm">
-        <div class="gallery-item-bg">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <p class="placeholder-text">https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/pipe.jpg</p>
-        </div>
-        <div class="gallery-overlay">
-          <p class="overlay-title">Pipe Welding</p>
-          <p class="overlay-tag">Pipe Welding</p>
-        </div>
-      </div>
-
-      <!-- ── TILE 6 ── -->
-      <div class="gallery-item reveal" data-category="atv">
-        <div class="gallery-item-bg">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <p class="placeholder-text">ATV/UTV Repair — Add photo here</p>
-        </div>
-        <div class="gallery-overlay">
-          <p class="overlay-title">UTV Cage Repair</p>
-          <p class="overlay-tag">ATV / UTV</p>
-        </div>
-      </div>
-
-      <!-- ── TILE 7 ── -->
-      <div class="gallery-item reveal" data-category="custom">
-        <div class="gallery-item-bg">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <p class="placeholder-text">Custom Work — Add photo here</p>
-        </div>
-        <div class="gallery-overlay">
-          <p class="overlay-title">Truck Rack</p>
-          <p class="overlay-tag">Custom Fabrication</p>
-        </div>
-      </div>
-
-      <!-- ── TILE 8 ── -->
-      <div class="gallery-item reveal" data-category="farm">
-        <div class="gallery-item-bg">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <p class="placeholder-text">Home/Farm Job — Add photo here</p>
-        </div>
-        <div class="gallery-overlay">
-          <p class="overlay-title">Garden Arch</p>
-          <p class="overlay-tag">Home Metalwork</p>
-        </div>
-      </div>
-
-      <!-- ── ADD MORE TILES HERE — just copy a block above and paste ── -->
+   <!--pic2-->   
+  <div class="gallery-item reveal" data-category="custom">
+  <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/bumperbefore.jpg'); background-size: cover; background-position: center;">
+  </div>
+  <div class="gallery-overlay">
+    <p class="overlay-title">F150 Bumper</p>
+    <p class="overlay-tag">Bumper Before</p>
+  </div>
+</div>
 
     </div>
   </section>
