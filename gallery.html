@@ -38,11 +38,6 @@
       color: var(--white);
     }
 
-    /* ── GALLERY GRID LAYOUT ──
-       The grid uses CSS grid-template-areas for varied sizing.
-       Cards with class "wide" span 2 columns.
-       Cards with class "tall" span 2 rows.
-       ============================================================ */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -59,15 +54,6 @@
     .gallery-item.wide  { grid-column: span 2; }
     .gallery-item.tall  { grid-row: span 2; }
 
-    /* ── HOW TO ADD YOUR OWN PHOTOS ──
-       Replace the background-color in each .gallery-item-bg with:
-       background-image: url('your-photo.jpg');
-       background-size: cover;
-       background-position: center;
-
-       Put your photo files in the same folder as the HTML files.
-       Example: background-image: url('atv-repair-1.jpg');
-       ============================================================ */
     .gallery-item-bg {
       width: 100%;
       height: 100%;
@@ -128,33 +114,6 @@
       padding: 0 1rem;
     }
 
-    /* Photo instructions box */
-    .photo-instructions {
-      background: rgba(184,75,26,0.08);
-      border: 1px solid rgba(184,75,26,0.25);
-      padding: 2rem;
-      margin-bottom: 3rem;
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-    }
-    .photo-instructions svg { width: 24px; height: 24px; stroke: var(--rust); fill: none; stroke-width: 1.5; flex-shrink: 0; margin-top: 2px; }
-    .photo-instructions h3 {
-      font-family: var(--font-label);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-    .photo-instructions p { font-size: 0.875rem; color: var(--smoke); line-height: 1.7; }
-    .photo-instructions code {
-      background: rgba(255,255,255,0.08);
-      padding: 0.1em 0.4em;
-      font-size: 0.85em;
-      color: var(--rust);
-    }
-
     /* CTA at bottom */
     .gallery-cta {
       text-align: center;
@@ -178,8 +137,8 @@
 </head>
 <body>
 
-  <!-- ── NAV — active link updated to Gallery ── -->
-    <nav>
+  <!-- ── NAV ── -->
+  <nav>
     <a class="nav-logo" href="index.html"><span>Rust Belt</span> Fabrication</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -191,44 +150,98 @@
     <a class="nav-cta" href="contact.html">Get a Quote</a>
   </nav>
 
-  <!-- ── PAGE HERO — change title and subtitle ── -->
+  <!-- ── PAGE HERO ── -->
   <div class="page-hero">
     <p class="section-eyebrow">Our Work</p>
     <h1 class="section-title">Project Gallery</h1>
     <p>Photos of completed jobs — ATV repairs, custom fab, on-site welding, and more. Add your own photos to this page as you complete projects.</p>
   </div>
 
+  <section>
 
-  <section>      
-
-<!--filters-->
+    <!-- FILTERS -->
     <div class="gallery-filters">
       <button class="filter-btn active" data-filter="all">All Work</button>
       <button class="filter-btn" data-filter="custom">Custom Fab</button>
       <button class="filter-btn" data-filter="repair">Repairs</button>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- EXISTING: Fuel Tank -->
+      <div class="gallery-item tall reveal" data-category="custom">
+        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/fueltank.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Custom Jetski Fuel Tank</p>
+          <p class="overlay-tag">Aluminum MiG</p>
+        </div>
       </div>
 
-<div class="gallery-grid">
-  <!--pic1-->
-  <div class="gallery-item tall reveal" data-category="custom">
-    <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/fueltank.jpg'); background-size: cover; background-position: center;">
+      <!-- EXISTING: Bumper Before -->
+      <div class="gallery-item tall reveal" data-category="custom">
+        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/bumperbefore.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">F150 Bumper</p>
+          <p class="overlay-tag">Bumper Before</p>
+        </div>
+      </div>
+
+      <!-- NEW 1: Aluminum Railing Corner — tall -->
+      <div class="gallery-item tall reveal" data-category="custom">
+        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/railing-corner.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Aluminum Railing Corner Fabrication</p>
+          <p class="overlay-tag">Custom Fab · Aluminum MiG</p>
+        </div>
+      </div>
+
+      <!-- NEW 2: Mobile Trailer Repair — wide -->
+      <div class="gallery-item wide reveal" data-category="repair">
+        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/trailer-repair-mobile.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Mobile Aluminum Trailer Repair</p>
+          <p class="overlay-tag">On-Site Repair · Aluminum MiG</p>
+        </div>
+      </div>
+
+      <!-- NEW 3: Trailer Tongue Repair — normal -->
+      <div class="gallery-item reveal" data-category="repair">
+        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/trailer-tongue.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Aluminum Trailer Tongue Repair</p>
+          <p class="overlay-tag">Repair · Aluminum MiG</p>
+        </div>
+      </div>
+
+      <!-- NEW 4: Trailer Fender Repair — tall -->
+      <div class="gallery-item tall reveal" data-category="repair">
+        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/trailer-fender.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Aluminum Trailer Fender Repair</p>
+          <p class="overlay-tag">Repair · Aluminum MiG</p>
+        </div>
+      </div>
+
+      <!-- NEW 5: Dock Support Angle Iron Repair — normal -->
+      <div class="gallery-item reveal" data-category="repair">
+        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/dock-angle-repair.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Dock Support Angle Iron Repair</p>
+          <p class="overlay-tag">Repair · Aluminum MiG</p>
+        </div>
+      </div>
+
+      <!-- NEW 6: Dock Support Fabrication — wide -->
+      <div class="gallery-item wide reveal" data-category="custom">
+        <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/dock-support-fab.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="gallery-overlay">
+          <p class="overlay-title">Dock Support Fabrication</p>
+          <p class="overlay-tag">Custom Fab · Aluminum MiG</p>
+        </div>
+      </div>
+
     </div>
-    <div class="gallery-overlay">
-      <p class="overlay-title">Custom Jetski Fuel Tank</p>
-      <p class="overlay-tag">Aluminum MiG</p>
-    </div>
-  </div>
-  <!--pic2-->
-  <div class="gallery-item tall reveal" data-category="custom">
-    <div class="gallery-item-bg" style="background-image: url('https://raw.githubusercontent.com/rustbeltfab/website/refs/heads/main/pictures/bumperbefore.jpg'); background-size: cover; background-position: center;">
-    </div>
-    <div class="gallery-overlay">
-      <p class="overlay-title">F150 Bumper</p>
-      <p class="overlay-tag">Bumper Before</p>
-    </div>
-  </div>
-</div>
-</section>
+  </section>
 
   <!-- ── GALLERY BOTTOM CTA ── -->
   <div class="gallery-cta">
@@ -238,14 +251,13 @@
     <a class="btn-primary" href="contact.html">Get a Free Quote</a>
   </div>
 
-
   <!-- ── FOOTER ── -->
   <footer>
     <div>
-       <div class="footer-logo"><span>Rust Belt</span> Fabrication</div>
+      <div class="footer-logo"><span>Rust Belt</span> Fabrication</div>
       <p class="footer-tagline">Custom Welding, Fabrication &amp; Repair · Rockford, Michigan · We Come To You</p>
     </div>
-     <ul class="footer-links">
+    <ul class="footer-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="gallery.html">Gallery</a></li>
@@ -257,7 +269,6 @@
     <p>© 2026 Rust Belt Fabrication · Rockford, MI 49341</p>
     <p>Built tough, built local.</p>
   </div>
-
 
   <script>
     // Scroll reveal
@@ -275,10 +286,7 @@
       nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(184,75,26,0.5)' : 'rgba(184,75,26,0.3)';
     });
 
-    // ── GALLERY FILTER TABS ──
-    // This handles showing/hiding tiles when filter buttons are clicked.
-    // You don't need to change this — just make sure your gallery items
-    // have the correct data-category attribute (atv, custom, repair, farm).
+    // Gallery filter tabs
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
